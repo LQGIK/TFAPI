@@ -1,4 +1,7 @@
 from flask import Flask, jsonify, request, render_template
+from flask_cors import CORS
+import tf
+
 
 # CONFIG
 app = Flask(__name__)
@@ -6,6 +9,8 @@ app.config['ENV'] = 'development'
 app.config['DEBUG'] = True
 app.config['TESTING'] = True
 app.config["TEMPLATES_AUTO_RELOAD"] = True
+CORS(app)
+
 
 
 @app.before_request
@@ -19,11 +24,10 @@ def setModel():
     Accepts POST req of layers {nodes, activation, etc} to create a tensorflow model that is saved
     '''
 
-
-
-
-    data = "hello world"
-    return data 
+    data = request.get_json()
+    model = tf.genModel(data)
+    print(model.summary())
+    return jsonify(data)
 
 
 
@@ -53,4 +57,4 @@ def hello(name):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=105)
+    app.run(host='localhost', port=8080)

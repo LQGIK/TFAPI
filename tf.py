@@ -5,28 +5,6 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 import json
 
-'''
-inputs = tf.placeholder(tf.float32, shape=(None, X_train.shape[1]), name='inputs')
-label = tf.placeholder(tf.float32, shape=(None, 2), name='labels')
-
-# First layer
-hid1_size = 128
-w1 = tf.Variable(tf.random_normal([hid1_size, X_train.shape[1]], stddev=0.01), name='w1')
-b1 = tf.Variable(tf.constant(0.1, shape=(hid1_size, 1)), name='b1')
-y1 = tf.nn.dropout(tf.nn.relu(tf.add(tf.matmul(w1, tf.transpose(inputs)), b1)), keep_prob=0.5)
-
-# Second layer
-hid2_size = 256
-w2 = tf.Variable(tf.random_normal([hid2_size, hid1_size], stddev=0.01), name='w2')
-b2 = tf.Variable(tf.constant(0.1, shape=(hid2_size, 1)), name='b2')
-y2 = tf.nn.dropout(tf.nn.relu(tf.add(tf.matmul(w2, y1), b2)), keep_prob=0.5)
-
-# Output layer
-wo = tf.Variable(tf.random_normal([2, hid2_size], stddev=0.01), name='wo')
-bo = tf.Variable(tf.random_normal([2, 1]), name='bo')
-yo = tf.transpose(tf.add(tf.matmul(wo, y2), bo))
-'''
-
 def get_model():
     """
     Returns a compiled convolutional neural network model. Assume that the
@@ -95,7 +73,7 @@ def genModel(modelStruct):
         return None
 
 
-
+    '''
     modelStruct = {
         "type":                     "sequential",
         'input_shape':              (1, 2), 
@@ -127,7 +105,7 @@ def genModel(modelStruct):
                 }
             ]
     }
-    
+    '''
 
 
     # Data Types
