@@ -10,7 +10,7 @@ function run(){
     let url = "http://localhost:8080/setModel/";
     let modelStruct = {
         type:                       "sequential",
-        input_shape:                (1, 2), 
+        input_shape:                [1, 2], 
         optimizer:                  'adam',
         loss:                       'categorical_crossentropy',
         metrics:  [
@@ -48,7 +48,7 @@ function run(){
 function sendJSON(struct, url){ 
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", target_url, true);
+    xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -65,5 +65,5 @@ function sendJSON(struct, url){
 }
 
 function responseHandler(json){
-
+    document.querySelector("body").innerHTML += JSON.stringify(json);
 }

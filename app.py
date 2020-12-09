@@ -25,8 +25,9 @@ def setModel():
     '''
 
     data = request.get_json()
-    model = tf.genModel(data)
+    model = tf.getModel(data)
     print(model.summary())
+    print(data)
     return jsonify(data)
 
 
